@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">instabangla</string>
+    <string name="admob_app_id">ca-app-pub-5067669429792009~2368672184</string>
+    <string name="banner_ad_unit_id">ca-app-pub-5067669429792009/7237855488</string>
+    <string name="banner_ad_unit_id_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-5067669429792009/5377785385</string>
+    <string name="interstitial_ad_unit_id_test">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="native_advanced_ad_unit_id">ca-app-pub-5067669429792009/2532323711</string>
+    <string name="native_advanced_ad_unit_id_test">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="rewarded_ad_unit_id">ca-app-pub-5067669429792009/4064703719</string>
+    <string name="rewarded_ad_unit_id_test">ca-app-pub-5067669429792009/4064703719</string>
 </resources>

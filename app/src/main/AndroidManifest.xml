@@ -21,6 +21,11 @@
 
         <activity android:name=".MainActivity" />
 
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5067669429792009~2368672184"/>
+
     </application>
 
 </manifest>
