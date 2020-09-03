@@ -31,6 +31,7 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private WebView web;
     private TextView toolbarTitle;
@@ -54,14 +55,14 @@ public class MainActivity extends AppCompatActivity {
         //banner ad
         AdView adView = new AdView(this);
         adView.setAdSize(AdSize.BANNER);
-        adView.setAdUnitId(getString(R.string.banner_ad_unit_id_test));
+        adView.setAdUnitId(getString(R.string.banner_ad_unit_id));
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
         //InterstitialAd
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id_test));
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
 
@@ -147,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onPageFinished(WebView view, String url) {
-
             /*
             //Hide Specific Part of WebView
             view.loadUrl("javascript:(function() { " +
@@ -174,6 +174,12 @@ public class MainActivity extends AppCompatActivity {
                     if (web.canGoBack()) {
                         web.goBack();
                     } else {
+
+                        if (mInterstitialAd.isLoaded()) {
+                            mInterstitialAd.show();
+                        } else {
+                            Log.d("TAG", "The interstitial wasn't loaded yet.");
+                        }
                         final AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
                         alertDialog.setTitle("Exit!!");
                         alertDialog.setMessage("Do you want to exit the app?");
@@ -198,7 +204,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    /** Called when leaving the activity */
+    /**
+     * Called when leaving the activity
+     */
     @Override
     public void onPause() {
         if (mAdView != null) {
@@ -207,7 +215,9 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    /** Called when returning to the activity */
+    /**
+     * Called when returning to the activity
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -216,7 +226,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /** Called before the activity is destroyed */
+    /**
+     * Called before the activity is destroyed
+     */
     @Override
     public void onDestroy() {
         if (mAdView != null) {
